@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="tab_text_color">#ccffffff</color>
+    <color name="banner_background_color">#80000000</color>
+    <color name="poi_info_text_color">#66ffffff</color>
+    <color name="search_hint_text_color">#66ffffff</color>
+    <color name="search_input_text_color">#99ffffff</color>
+    <color name="color_f08b18">#F08B18</color>
+    <color name="dynamic_view_selected_background_color">#3F3F3F</color>
+    <color name="dynamic_view_background_color">#2A2A2A</color>
+    <!--<color name="route_info_view_background_color">#2c2c2c</color>-->
+
+  <!--filter-->
+    <color name="black_p50">#7f000000</color>
+    <color name="gray_e7e7e7">#e7e7e7</color>
+    <color name="b_c_fafafa">#fafafa</color>
+    <color name="blue_4285f4">#4285f4</color>
+    <color name="black_5a626d">#5a626d</color>
+
+
+    <color name="color_ccf6">#ccffffff</color>
+    <color name="color_D2D2D0">#D2D2D0</color>
+    <color name="color_333333">#333333</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
+
+</resources>

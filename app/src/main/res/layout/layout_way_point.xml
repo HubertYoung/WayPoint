@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_way_point_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/space_10"
+    android:visibility="visible"
+    tools:visibility="visible">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_way_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_15"
+        android:background="@drawable/route_plan_add_address_bg"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_15">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_start_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_big0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/big_oval_button_background" />
+
+                <TextView
+                    android:id="@+id/tv_start_point"
+                    android:layout_width="@dimen/space_400"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/space_10"
+                    android:paddingEnd="@dimen/space_10"
+                    android:singleLine="true"
+                    android:text="@string/my_location"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_30" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_oval_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_5"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/small_oval_button_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/small_oval_button_background" />
+
+                <ImageView
+                    android:id="@+id/small_oval_button_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_15"
+                    android:background="@drawable/small_oval_button_background" />
+
+                <ImageView
+                    android:id="@+id/small_oval_button_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_15"
+                    android:background="@drawable/small_oval_button_background" />
+
+                <ImageView
+                    android:id="@+id/small_oval_button_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_15"
+                    android:background="@drawable/small_oval_button_background" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_way_point1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_marginBottom="@dimen/space_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_way_point1"
+                    android:layout_width="@dimen/space_20"
+                    android:layout_height="@dimen/space_20"
+                    android:background="@drawable/ripple_oval"
+                    android:src="@drawable/big_oval_button_background" />
+
+                <TextView
+                    android:id="@+id/et_way_point1"
+                    android:layout_width="@dimen/space_400"
+                    android:layout_height="@dimen/space_50"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:background="@drawable/search_way_point_bg"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_way_point"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text|textAutoComplete"
+                    android:paddingStart="@dimen/space_10"
+                    android:paddingEnd="@dimen/space_10"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/search_input_text_color"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="@dimen/text_25"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_way_point2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_marginBottom="@dimen/space_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_way_point2"
+                    android:layout_width="@dimen/space_20"
+                    android:layout_height="@dimen/space_20"
+                    android:background="@drawable/ripple_oval"
+                    android:src="@drawable/big_oval_button_background" />
+
+                <TextView
+                    android:id="@+id/et_way_point2"
+                    android:layout_width="@dimen/space_400"
+                    android:layout_height="@dimen/space_50"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:background="@drawable/search_way_point_bg"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_way_point"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text|textAutoComplete"
+                    android:paddingStart="@dimen/space_10"
+                    android:paddingEnd="@dimen/space_10"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/search_input_text_color"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="@dimen/text_25"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_way_point3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_marginBottom="@dimen/space_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_way_point3"
+                    android:layout_width="@dimen/space_20"
+                    android:layout_height="@dimen/space_20"
+                    android:background="@drawable/ripple_oval"
+                    android:src="@drawable/big_oval_button_background" />
+
+                <TextView
+                    android:id="@+id/et_way_point3"
+                    android:layout_width="@dimen/space_400"
+                    android:layout_height="@dimen/space_50"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:background="@drawable/search_way_point_bg"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_way_point"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text|textAutoComplete"
+                    android:paddingStart="@dimen/space_10"
+                    android:paddingEnd="@dimen/space_10"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/search_input_text_color"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="@dimen/text_25"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_end_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/iv_big1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/big_oval_button_background" />
+
+                <TextView
+                    android:id="@+id/tv_end_point"
+                    android:layout_width="@dimen/space_400"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/space_10"
+                    android:paddingEnd="@dimen/space_10"
+                    android:singleLine="true"
+                    android:text="@string/my_location"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_30" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_way_point"
+            android:layout_width="@dimen/space_400"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_20"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_20"
+            android:visibility="gone"
+            tools:text="经几地途经点"
+            tools:visibility="visible" />
+
+        <!--切换位置-->
+        <ImageView
+            android:id="@+id/iv_switch"
+            android:layout_width="@dimen/space_50"
+            android:layout_height="@dimen/space_50"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ripple_oval"
+            android:src="@drawable/ic_switch_place"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <!--添加途经点-->
+        <ImageView
+            android:id="@+id/iv_add_way_point"
+            android:layout_width="@dimen/space_50"
+            android:layout_height="@dimen/space_50"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/iv_switch"
+            android:background="@drawable/ripple_oval"
+            android:src="@drawable/ic_add_way_point"
+            android:visibility="visible"
+            tools:visibility="visible" />
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
