@@ -1,1 +1,1 @@
-# WayPoiny
+# WayPoint
