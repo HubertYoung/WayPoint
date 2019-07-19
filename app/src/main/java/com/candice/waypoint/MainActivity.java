@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FrameLayout mFlContaner;
     private TextView mTvJump;
+    public WayPointBean[] mWayPointBeans = new WayPointBean[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         mTvJump.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              if (blankFragment.isAdded()){
-                  beginTransaction.show(blankFragment);
-              }else {
-                  beginTransaction.add(R.id.fl_container,blankFragment);
-              }
-              beginTransaction.commit();
+                if (blankFragment.isAdded()) {
+                    beginTransaction.show(blankFragment);
+                } else {
+                    beginTransaction.add(R.id.fl_container, blankFragment);
+                }
+                beginTransaction.commit();
                 mFlContaner.setVisibility(View.VISIBLE);
                 mTvJump.setVisibility(View.GONE);
             }

@@ -55,7 +55,7 @@ public class ListAdapter extends BaseAdapter {
         }
         String s = mStringList.get(position);
         viewHolder.tvTitle.setText(s);
-        return null;
+        return convertView;
     }
 
     public static class ViewHolder{

@@ -151,7 +151,6 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
 //        if (mListener != null) {
 //            mListener.onFragmentInteraction(uri);
@@ -180,6 +179,8 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.iv_add_way_point:
                 //添加途经点
+                llWayPoint1.setVisibility(View.VISIBLE);
+                llOvalSmall.setVisibility(View.GONE);
                 break;
             case R.id.iv_way_point1:
                 //删除途经点1
@@ -221,6 +222,7 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
         beginTransaction.commit();
         rlWayPointRoot.setVisibility(View.GONE);
         tvBack.setVisibility(View.GONE);
+        mFlBlankFragmwnt.setVisibility(View.VISIBLE);
     }
 
     public void updateUI(String itemContent) {
