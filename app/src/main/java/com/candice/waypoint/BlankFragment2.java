@@ -38,6 +38,7 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
     private OnFragmentInteractionListener mListener;
     private ArrayList<String> mStringList;
     private String mItemContent;
+    private MainActivity mActivity;
 
     public BlankFragment2() {
         // Required empty public constructor
@@ -64,6 +65,9 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivity = (MainActivity) getActivity();
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -137,9 +141,11 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
         Fragment parentFragment = getParentFragment();
         if (parentFragment instanceof BlankFragment) {
             BlankFragment blankFragment = (BlankFragment) parentFragment;
-
             blankFragment.updateUI(itemContent);
         }
+
+
+
     }
 
     /**
