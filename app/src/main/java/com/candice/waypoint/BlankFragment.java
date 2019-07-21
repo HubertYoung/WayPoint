@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -156,6 +157,7 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
         etWayPoint1.setOnClickListener(this);
         etWayPoint2.setOnClickListener(this);
         etWayPoint3.setOnClickListener(this);
+        tvWayPoint.setOnClickListener(this);
 
     }
 
@@ -187,22 +189,24 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.iv_add_way_point:
                 addWayPoint();
-
                 break;
             case R.id.iv_way_point1:
                 //删除途经点1
+                deleteWayPoint(etWayPoint1.getText().toString(), llWayPoint1, etWayPoint1);
                 break;
             case R.id.iv_way_point2:
                 //删除途经点2
-
+                deleteWayPoint(etWayPoint2.getText().toString(), llWayPoint2, etWayPoint2);
                 break;
             case R.id.iv_way_point3:
                 //删除途经点3
-
+                deleteWayPoint(etWayPoint3.getText().toString(), llWayPoint3, etWayPoint3);
                 break;
             case R.id.tv_back:
                 break;
-
+            case R.id.tv_way_point:
+                addWayPoint();
+                break;
             case R.id.et_way_point1:
                 //跳转到搜索页面添加途经点
                 jumpBlankFragment2();
@@ -218,24 +222,74 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-
-    private void addWayPoint() {
+    private void deleteWayPoint(String text, LinearLayout llWayPoint, TextView etWayPoint) {
+        isDelete = true;
+        llWayPoint.setVisibility(View.GONE);
+        etWayPoint.setText("");
+        if (mMLayouts[0].getVisibility() == View.GONE && mMLayouts[1].getVisibility() == View.GONE && mMLayouts[2].getVisibility() == View.GONE) {
+            llOvalSmall.setVisibility(View.VISIBLE);
+        } else {
+            llOvalSmall.setVisibility(View.GONE);
+        }
+        if (!TextUtils.isEmpty(text)) {
+            for (int i = 0; i < mActivity.mWayPointBeans.length; i++) {
+                WayPointBean wayPointBean = mActivity.mWayPointBeans[i];
+                if (wayPointBean != null && !TextUtils.isEmpty(wayPointBean.getTitle())) {
+                    if (text.equals(wayPointBean.getTitle())) {
+                        mActivity.mWayPointBeans[i] = null;
+                    }
+                }
+            }
+        }
         for (int i = 0; i < mActivity.mWayPointBeans.length; i++) {
-            WayPointBean wayPointBean = mActivity.mWayPointBeans[i];
-            if (wayPointBean == null) {
-                mMLayouts[i].setVisibility(View.VISIBLE);
-                break;
-            } else {
-                if (!TextUtils.isEmpty(wayPointBean.getTitle())) {
-                    mTextViews[i].setText(wayPointBean.getTitle());
-                    mMLayouts[i].setVisibility(View.VISIBLE);
-                }else {
-                    mMLayouts[i].setVisibility(View.VISIBLE);
+            if (mActivity.mWayPointBeans[i] == null) {
+                if (i + 1 == mActivity.mWayPointBeans.length) {
+                    mActivity.mWayPointBeans[i] = null;
                     break;
                 }
-
-
+                if (mActivity.mWayPointBeans[i + 1] != null) {
+                    WayPointBean temp = mActivity.mWayPointBeans[i];
+                    mActivity.mWayPointBeans[i] = mActivity.mWayPointBeans[i + 1];
+                    mActivity.mWayPointBeans[i + 1] = temp;
+                }
+            } else {
+                i++;
+                if (mActivity.mWayPointBeans[i] == null) {
+                    WayPointBean temp = mActivity.mWayPointBeans[i];
+                    mActivity.mWayPointBeans[i] = mActivity.mWayPointBeans[i + 1];
+                    mActivity.mWayPointBeans[i + 1] = temp;
+                }
             }
+
+        }
+        count--;
+        ivAddWayPoint.setClickable(true);
+        ivAddWayPoint.setEnabled(true);
+    }
+
+    private boolean isDelete = false;
+
+    private void addWayPoint() {
+        if (isDelete) {
+            llWayPoint1.setVisibility(View.GONE);
+            llWayPoint2.setVisibility(View.GONE);
+            llWayPoint3.setVisibility(View.GONE);
+        }
+        for (int i = 0; i < mActivity.mWayPointBeans.length; i++) {
+            WayPointBean wayPointBean = mActivity.mWayPointBeans[i];
+            LinearLayout mLayout = mMLayouts[i];
+            if (mLayout.getVisibility() == View.GONE) {
+                if (wayPointBean != null && !TextUtils.isEmpty(wayPointBean.getTitle())) {
+                    mTextViews[i].setText(wayPointBean.getTitle());
+                    mLayout.setVisibility(View.VISIBLE);
+                } else {
+                    mTextViews[i].setText("请输入途经点");
+                    mLayout.setVisibility(View.VISIBLE);
+                    break;
+                }
+            }
+
+
         }
         //添加途经点
         tvWayPoint.setVisibility(View.GONE);
@@ -267,7 +321,16 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
                 if (mActivity.mWayPointBeans[i].equals(wayPointBean)) {
                     break;
                 } else {
-                    mActivity.mWayPointBeans[i] = wayPointBean;
+                    i++;
+                    if (mActivity.mWayPointBeans[i] == null) {
+                        mActivity.mWayPointBeans[i] = wayPointBean;
+                        break;
+                    } else {
+                        if (mActivity.mWayPointBeans[i].equals(wayPointBean)) {
+                            mActivity.mWayPointBeans[i] = wayPointBean;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -282,6 +345,14 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
             tvWayPoint.setText("经" + count + "地" + wayPoint);
             tvWayPoint.setVisibility(View.VISIBLE);
         }
+        if (count == 3) {
+            ivAddWayPoint.setClickable(false);
+            ivAddWayPoint.setEnabled(false);
+        } else {
+            ivAddWayPoint.setClickable(true);
+            ivAddWayPoint.setEnabled(true);
+        }
+        Log.e("TAG", "count-->" + count);
         llWayPoint1.setVisibility(View.GONE);
         llWayPoint2.setVisibility(View.GONE);
         llWayPoint3.setVisibility(View.GONE);
