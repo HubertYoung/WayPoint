@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FrameLayout mFlContaner;
     private TextView mTvJump;
+
     public WayPointBean[] mWayPointBeans = new WayPointBean[3];
 
     @Override
@@ -28,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
                 if (blankFragment.isAdded()) {
                     beginTransaction.show(blankFragment);
                 } else {
-                    beginTransaction.add(R.id.fl_container, blankFragment);
+                    beginTransaction.add(R.id.fl_container, blankFragment,"blankFragment");
                 }
                 beginTransaction.commit();
                 mFlContaner.setVisibility(View.VISIBLE);
                 mTvJump.setVisibility(View.GONE);
             }
         });
+        mTvJump.callOnClick();
     }
 }

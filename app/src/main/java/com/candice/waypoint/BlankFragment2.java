@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
 
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String index;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
@@ -69,7 +70,7 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
 
 
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            index = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -98,6 +99,7 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mItemContent = mStringList.get(position);
+                backLastPage(mItemContent);
 
             }
         });
@@ -137,15 +139,12 @@ public class BlankFragment2 extends Fragment implements View.OnClickListener {
     }
 
     private void backLastPage(String itemContent) {
-        getChildFragmentManager().beginTransaction().hide(BlankFragment2.this).commit();
-        Fragment parentFragment = getParentFragment();
-        if (parentFragment instanceof BlankFragment) {
-            BlankFragment blankFragment = (BlankFragment) parentFragment;
-            blankFragment.updateUI(itemContent);
-        }
-
-
-
+        FragmentTransaction beginTransaction = mActivity.getSupportFragmentManager().beginTransaction();
+        beginTransaction.hide( this );
+        Fragment blankFragment1 = mActivity.getSupportFragmentManager().findFragmentByTag( "blankFragment" );
+        beginTransaction.show( blankFragment1 );
+        beginTransaction.commitAllowingStateLoss();
+        ((BlankFragment)blankFragment1).updateUI(itemContent,index);
     }
 
     /**

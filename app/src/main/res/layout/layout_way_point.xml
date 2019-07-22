@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_way_point_root"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="@dimen/space_10"
     android:visibility="visible"
+    android:background="@android:color/holo_blue_bright"
     tools:visibility="visible">
 
 
@@ -16,12 +17,14 @@
         android:layout_margin="@dimen/space_15"
         android:background="@drawable/route_plan_add_address_bg"
         android:orientation="horizontal"
+        android:animateLayoutChanges="true"
         android:padding="@dimen/space_15">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -56,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space_5"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/small_oval_button_0"
@@ -95,8 +98,9 @@
                 android:layout_marginBottom="@dimen/space_10"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:animateLayoutChanges="true"
                 android:visibility="gone"
-                tools:visibility="gone">
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_way_point1"
@@ -113,7 +117,7 @@
                     android:background="@drawable/search_way_point_bg"
                     android:cursorVisible="true"
                     android:gravity="center_vertical"
-                    android:hint="@string/input_way_point"
+                    android:hint="@string/input_way_point1"
                     android:imeOptions="actionSearch"
                     android:inputType="text|textAutoComplete"
                     android:paddingStart="@dimen/space_10"
@@ -134,8 +138,9 @@
                 android:layout_marginBottom="@dimen/space_10"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:animateLayoutChanges="true"
                 android:visibility="gone"
-                tools:visibility="gone">
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_way_point2"
@@ -152,7 +157,7 @@
                     android:background="@drawable/search_way_point_bg"
                     android:cursorVisible="true"
                     android:gravity="center_vertical"
-                    android:hint="@string/input_way_point"
+                    android:hint="@string/input_way_point2"
                     android:imeOptions="actionSearch"
                     android:inputType="text|textAutoComplete"
                     android:paddingStart="@dimen/space_10"
@@ -173,8 +178,9 @@
                 android:layout_marginBottom="@dimen/space_10"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:animateLayoutChanges="true"
                 android:visibility="gone"
-                tools:visibility="gone">
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_way_point3"
@@ -191,7 +197,7 @@
                     android:background="@drawable/search_way_point_bg"
                     android:cursorVisible="true"
                     android:gravity="center_vertical"
-                    android:hint="@string/input_way_point"
+                    android:hint="@string/input_way_point3"
                     android:imeOptions="actionSearch"
                     android:inputType="text|textAutoComplete"
                     android:paddingStart="@dimen/space_10"
@@ -236,21 +242,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_way_point"
-            android:layout_width="@dimen/space_400"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/space_20"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:layout_centerVertical="true"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/text_20"
-            android:visibility="gone"
-            tools:text="经几地途经点"
-            tools:visibility="visible" />
-
         <!--切换位置-->
         <ImageView
             android:id="@+id/iv_switch"
@@ -277,6 +268,21 @@
     </RelativeLayout>
 
 
+
+    <TextView
+        android:id="@+id/tv_way_point"
+        android:layout_width="@dimen/space_400"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_20"
+        android:layout_below="@+id/rl_way_root"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_20"
+        android:visibility="gone"
+        tools:text="经几地途经点"
+        tools:visibility="visible" />
 
 
 
